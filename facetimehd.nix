@@ -1,22 +1,26 @@
 {
-  fetchFromGitHub,
+  fetchFromGitHub, # Function to fetch source code from GitHub releases
   stdenv,
   linuxPackages,
   cmake,
-  dkms,
+  dkms, # DKMS (Dynamic Kernel Module Support) package
 }:
 stdenv.mkDerivation rec {
   pname = "facetimehd";
   version = "0.5.7";
+
+  # Fetch the source code from GitHub
   src = fetchFromGitHub {
     owner = "patjak";
     repo = pname;
     rev = "v${version}";
-    sha256 = "5361032278e09fe4d096d421189d8438f7cfabab923a3aa1739ad515a4047ae5";
+    sha256 = "5361032278e09fe4d096d421189d8438f7cfabab923a3aa1739ad515a4047ae5"; # SHA256 hash of the release archive
   };
 
+  # Dependencies required for building
   buildInputs = [cmake linuxPackages.dkms];
 
+  # Additional build-time dependencies
   nativeBuildInputs = [cmake];
 
   # Build the module
