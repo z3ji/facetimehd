@@ -7,14 +7,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "facetimehd";
-  version = "0.5.7";
+  version = "0.5.18";
 
   # Fetch the source code from GitHub
   src = fetchFromGitHub {
     owner = "patjak";
     repo = pname;
     rev = "v${version}";
-    sha256 = "5361032278e09fe4d096d421189d8438f7cfabab923a3aa1739ad515a4047ae5"; # SHA256 hash of the release archive
+    sha256 = "128075229e8c6862ae6f9f493b8e91da9ac3fb8d79b38ca2104b6dd0747a1311"; # SHA256 hash of the release archive
   };
 
   # Dependencies required for building
